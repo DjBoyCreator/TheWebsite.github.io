@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+SameSite=Secure
+<html>
+<body bgcolor="000000">
+
+<h1 style="color: #0000ff; font-family: Courier New;",>Fighter Jet Simulator</h1>
+<canvas id="jet" width="1200" height="725" style="border:1px solid #0000ff;"></canvas>
+<canvas id="stats" width = "275" height="725" style="border:1px solid #0000ff;"></canvas>
+
+
+<script>
+/*declare variables*/
+var canvas = document.getElementById('jet')
+var jet1 = canvas.getContext('2d');
+var stats = document.getElementById('stats').getContext('2d');
+var posX = 450;
+var posY = 200;
+var bulletX = 0;
+var bulletY = 0;
+var speed = 0;
+var altitude = 0;
+var image = new Image();
+
+drawplayer();
+/*key press */
+document.addEventListener("keydown", checkKeyPress, false);
+
+function checkKeyPress(key){
+if (key.keyCode == "65"){
+	for (let i = 0; i < 1; i++) {
+    console.log('x is');
+	posX = posX - 2;
+	console.log(posX);
+	drawplayer();
+		}
+	}
+	else if (key.keyCode == "68"){
+	for (let i = 0; i < 1; i++) {
+    console.log('x is');
+	posX = posX + 2;
+	console.log(posX);
+	drawplayer();
+		}
+	}
+	else if (key.keyCode == "87"){
+	for (let b = 0; b < 1; b++) {
+    console.log('y is');
+	posY = posY - 2;
+	console.log (posY);
+	drawplayer();
+		}
+	}else if (key.keyCode == "83"){
+	for (let b = 0; b < 1; b++) {
+    console.log('y is');
+	posY = posY + 2;
+	console.log (posY);
+	console.log (b);
+	drawplayer();
+		}
+	}else if (key.keyCode == "77"){
+	for (let c = 0; c < 1; c++) {
+    console.log('map');
+	map();
+		}
+	}else if (key.keyCode == "66"){
+	for (let d = 0; d < 1; d++) {
+    console.log('missiles');
+	missiles();
+		}
+	}else if (key.keyCode == "71"){
+	for (let z = 0; z < 1; z++) {
+    console.log('guns');
+	console.log (z);
+	guns();
+		}
+	}
+}
+
+function drawplayer(){
+	
+clear();
+
+/* middle rectangle */	
+jet1.fillStyle = 'gray';
+jet1.rect(posX + 130,posY + 130, 40, 240);
+jet1.fill();
+
+/* middle big rectangle*/
+jet1.fillStyle = 'gray';
+jet1.rect(posX + 110,posY +  200, 75, 100);
+jet1.fill();
+
+/* bottom rectangle*/
+jet1.fillStyle = 'gray';
+jet1.rect(posX + 50,posY +  300, 200, 50);
+jet1.fill();
+
+/* bottom triangle*/
+jet1.fillStyle = "gray";
+jet1.beginPath();
+jet1.moveTo(posX + 150,posY + 250);
+jet1.lineTo(posX + 50,posY + 300);
+jet1.lineTo(posX + 250,posY + 300);
+jet1.fill();
+
+/* middle triangle*/
+jet1.fillStyle = "gray";
+jet1.beginPath();
+jet1.moveTo(posX + 150,posY + 125);
+jet1.lineTo(posX + 25,posY + 250);
+jet1.lineTo(posX + 275,posY + 250);
+jet1.fill();
+
+/* side triangles*/
+jet1.fillStyle = "gray";
+jet1.beginPath();
+jet1.moveTo(posX + 22, posY + 210);
+jet1.lineTo(posX + 30, posY + 250);
+jet1.lineTo(posX + 15, posY + 250);
+jet1.fill();
+
+jet1.fillStyle = "gray";
+jet1.beginPath();
+jet1.moveTo(posX + 278, posY + 210);
+jet1.lineTo(posX + 285, posY + 250);
+jet1.lineTo(posX + 270, posY + 250);
+jet1.fill();
+
+/*top*/
+jet1.fillStyle = "gray";
+jet1.beginPath();
+jet1.moveTo(posX + 150, posY + 25);
+jet1.lineTo(posX + 125, posY + 150);
+jet1.lineTo(posX + 175, posY + 150);
+jet1.fill();
+}
+
+function drawAI1(){
+
+}
+
+function drawAI2(){
+
+}
+
+function drawAI3(){
+
+}
+
+function drawAI4(){
+
+}
+
+function missiles(){
+
+}
+
+function guns(){
+	for (let f = 0; f < 1; f++){
+	bulletX = bulletX + 2;
+	console.log (bulletX);
+	drawguns();
+	}
+}
+
+function drawguns(){
+/* draw weapons*/
+jet1.fillStyle = 'yellow';
+jet1.rect(bulletX + 130,bulletY + 130, 40, 240);
+jet1.fill();
+}
+/*
+function map(){
+	image.src ="Jetgame/map.jpg";
+	jet1.drawImage(image, 0, 0, canvas.width, canvas.height);
+	setTimeout(drawplayer, 3000)
+}*/
+
+function clear(){
+jet1.clearRect(0,0, 1200, 1000);
+}
+
+stats.fillStyle = 'blue';
+stats.font = '35px Courier New';
+stats.fillText('Altitude: ' + altitude, 10, 40);
+stats.fillText('Speed: ' + speed, 10, 300);
+
+</script>
+
+</body>
+</html>
+
